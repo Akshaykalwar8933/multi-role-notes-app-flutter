@@ -11,6 +11,7 @@ class NoteDialog extends StatefulWidget {
       String title,
       String description,
       NotePriority priority,
+
       ) onSubmit;
 
   const NoteDialog({
