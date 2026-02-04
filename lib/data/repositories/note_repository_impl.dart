@@ -23,32 +23,12 @@ class NoteRepositoryImpl implements NoteRepository {
     return localDataSource.deleteNote(id);
   }
 
-  // @override
-  // Future<List<NoteEntity>> getNotes() async {
-  //   return localDataSource.getNotes().map((model) => model.toEntity()).toList();
-  // }
-  //
-  // @override
-  // Future<bool> syncNotes() async {
-  //   print("SyncNotes  starting");
-  //
-  //   await Future.delayed(const Duration(seconds: 2));
-  //
-  //   final success = true;
-  //   print("syncNotes is success=$success");
-  //
-  //   if (success) {
-  //     await localDataSource.markAllSynced();
-  //   }
-  //   return success;
-  // }
-
   @override
   Future<bool> syncNotes() async {
     try {
-      print("===== SYNC START =====");
+      print("SYNC START");
       await localDataSource.markAllSynced();
-      print("===== SYNC SUCCESS =====");
+      print("SYNC SUCCESS");
       return true;
     } catch (e) {
       print("SYNC ERROR: $e");

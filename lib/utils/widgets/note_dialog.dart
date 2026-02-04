@@ -11,7 +11,6 @@ class NoteDialog extends StatefulWidget {
       String title,
       String description,
       NotePriority priority,
-
       ) onSubmit;
 
   const NoteDialog({
@@ -79,7 +78,7 @@ class _NoteDialogState extends State<NoteDialog> {
 
                 const SizedBox(height: 16),
 
-                // 🔹 Note title
+                ///------- Note title-----
                 TextFormField(
                   controller: titleCtrl,
                   decoration:
@@ -92,7 +91,7 @@ class _NoteDialogState extends State<NoteDialog> {
 
                 const SizedBox(height: 12),
 
-                // 🔹 Description
+                /// -------Description------
                 TextFormField(
                   controller: descCtrl,
                   minLines: 2,
@@ -107,7 +106,7 @@ class _NoteDialogState extends State<NoteDialog> {
 
                 const SizedBox(height: 12),
 
-                // 🔹 Priority
+                //  Priority
                 DropdownButtonFormField<NotePriority>(
                   value: selectedPriority,
                   decoration:
@@ -132,7 +131,7 @@ class _NoteDialogState extends State<NoteDialog> {
 
                 const SizedBox(height: 22),
 
-                // 🔹 Actions
+                /// ---------- Actions--------
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
@@ -174,7 +173,7 @@ class _NoteDialogState extends State<NoteDialog> {
     );
   }
 
-  // ================= INPUT DECORATION =================
+  /// ------------INPUT DECORATION------------
   InputDecoration _inputDecoration(
       BuildContext context, {
         required String label,

@@ -124,9 +124,6 @@ class LoginScreen extends StatelessWidget {
     );
   }
 
-  // ===============================
-  // ROLE BUTTON
-  // ===============================
   Widget _roleButton(
       BuildContext context, {
         required String title,

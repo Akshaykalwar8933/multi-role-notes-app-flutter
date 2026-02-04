@@ -36,7 +36,6 @@ class NotesScreen extends StatelessWidget {
       child: Scaffold(
         backgroundColor: theme.scaffoldBackgroundColor,
 
-        // ================= APP BAR =================
         appBar: AppBar(
           backgroundColor: theme.scaffoldBackgroundColor,
           elevation: 0,
@@ -45,7 +44,6 @@ class NotesScreen extends StatelessWidget {
             style: theme.textTheme.titleMedium,
           ),
           actions: [
-            // 🔄 Sync
 
             if (!isAdmin)
               BlocBuilder<NotesBloc, NotesState>(
@@ -79,7 +77,6 @@ class NotesScreen extends StatelessWidget {
           ],
         ),
 
-        // ================= FAB =================
         floatingActionButton:
         BlocBuilder<NotesBloc, NotesState>(
           builder: (context, state) {
@@ -107,7 +104,6 @@ class NotesScreen extends StatelessWidget {
           },
         ),
 
-        // ================= BODY =================
         body: BlocBuilder<NotesBloc, NotesState>(
           builder: (context, state) {
             if (state is! NotesLoaded) {
@@ -124,7 +120,7 @@ class NotesScreen extends StatelessWidget {
 
             return Column(
               children: [
-                // 🔍 SEARCH BAR
+
                 Padding(
                   padding: const EdgeInsets.fromLTRB(12, 12, 12, 8),
                   child: TextField(
@@ -156,7 +152,7 @@ class NotesScreen extends StatelessWidget {
                   ),
                 ),
 
-                // 📃 LIST
+
                 Expanded(
                   child: notes.isEmpty
                       ? Center(
@@ -179,7 +175,7 @@ class NotesScreen extends StatelessWidget {
     );
   }
 
-  // ================= NOTE CARD =================
+  /// Card Widget for each note
   Widget _noteCard(BuildContext context, NoteEntity note) {
     final theme = Theme.of(context);
     final cs = theme.colorScheme;
@@ -255,7 +251,7 @@ class NotesScreen extends StatelessWidget {
                 ),
               ),
 
-              // ===== ACTIONS =====
+              /// Edit Option
               if (!isAdmin)
                 IconButton(
                   visualDensity: VisualDensity.compact,
@@ -287,7 +283,7 @@ class NotesScreen extends StatelessWidget {
             ],
           ),
 
-          // ===== DESCRIPTION =====
+          /// DESCRIPTION
           children: [
             Align(
               alignment: Alignment.centerLeft,
@@ -302,7 +298,7 @@ class NotesScreen extends StatelessWidget {
     );
   }
 
-  // ================= PRIORITY BADGE =================
+  /// PRIORITY BADGE
   Widget _priorityBadge(NotePriority p) {
     final color = _priorityColor(p);
     return Container(
@@ -333,7 +329,7 @@ class NotesScreen extends StatelessWidget {
     }
   }
 
-  // ================= BOTTOM SHEETS =================
+  /// -------- BOTTOM SHEETS --------
   static void _showLogoutBottomSheet(BuildContext context) {
     showModalBottomSheet(
       context: context,
@@ -421,7 +417,7 @@ class NotesScreen extends StatelessWidget {
     );
   }
 
-  // ================= TIME =================
+  /// -------- TIME -------
   static String _formatNoteTime(NoteEntity note) {
     if (note.updatedAt == null) {
       return "Created ${_fmt(note.createdAt)}";

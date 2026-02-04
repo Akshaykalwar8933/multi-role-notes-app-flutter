@@ -58,7 +58,7 @@ class NotesBloc extends Bloc<NotesEvent, NotesState> {
     emit(NotesLoaded(_sortLatestFirst(notes)));
   }
 
-  // ================= UPDATE =================
+  /// ================= UPDATE =================
   Future<void> _updateNote(
       UpdateNoteEvent event,
       Emitter<NotesState> emit,
@@ -84,17 +84,17 @@ class NotesBloc extends Bloc<NotesEvent, NotesState> {
     emit(NotesLoaded(_sortLatestFirst(notes)));
   }
 
-  // ================= DELETE (FIXED) =================
+  /// ================= DELETE=================
   Future<void> _deleteNote(
       DeleteNoteEvent event,
       Emitter<NotesState> emit,
       ) async {
     await repository.deleteNote(event.id);
     final notes = await repository.getNotes();
-    emit(NotesLoaded(_sortLatestFirst(notes))); // ✅ FIX
+    emit(NotesLoaded(_sortLatestFirst(notes)));
   }
 
-  // ================= SYNC (FIXED) =================
+  /// ================= SYNC =================
   Future<void> _syncNotes(
       SyncNotesEvent event,
       Emitter<NotesState> emit,
@@ -121,7 +121,7 @@ class NotesBloc extends Bloc<NotesEvent, NotesState> {
     );
   }
 
-  // ================= SEARCH =================
+  /// Search notes by title, description, or priority
   Future<void> _searchNotes(
       SearchNotesEvent event,
       Emitter<NotesState> emit,

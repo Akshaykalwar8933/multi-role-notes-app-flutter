@@ -23,7 +23,7 @@ class NoteLocalDataSource {
   }
 
   Future<void> markAllSynced() async {
-    print("===== markAllSynced CALLED =====");
+    print("markAllSynced CALLED");
 
     for (var note in box.values) {
       print(
@@ -44,6 +44,6 @@ class NoteLocalDataSource {
       );
     }
 
-    print("===== markAllSynced END =====");
+    print("markAllSynced END");
   }
 }

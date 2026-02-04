@@ -30,7 +30,7 @@ class NoteModel extends HiveObject {
   bool isVisibleToAdmin;
 
   @HiveField(8)
-  String priority; // 🔥 stored as string
+  String priority;
 
   NoteModel({
     required this.id,

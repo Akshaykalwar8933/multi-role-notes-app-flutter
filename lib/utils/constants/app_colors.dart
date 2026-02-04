@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
 class AppColors {
-  // ===== BRAND =====
+  /// ===== BRAND =====
   static const primary = Color(0xFF2563EB); // blue
   static const danger = Color(0xFFDC2626);  // red
   static const success = Color(0xFF16A34A); // green
 
-  // ===== LIGHT MODE =====
+  /// ===== LIGHT MODE =====
   static const lightBackground = Colors.white;
   static const lightSurface = Color(0xFFF9FAFB);
   static const lightCard = Colors.white;

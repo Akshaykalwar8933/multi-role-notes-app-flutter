@@ -10,7 +10,7 @@ class NoteEntity {
   final bool isVisibleToAdmin;
   final String createdBy;
 
-  final NotePriority priority; // 🔥 IMPORTANT
+  final NotePriority priority;
 
   NoteEntity({
     required this.id,
