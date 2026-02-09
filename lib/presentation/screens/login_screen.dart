@@ -32,7 +32,7 @@ class LoginScreen extends StatelessWidget {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    // 🔵 App Icon
+                    //  App Icon
                     CircleAvatar(
                       radius: isSmallScreen ? 32 : 40,
                       backgroundColor:
@@ -46,7 +46,7 @@ class LoginScreen extends StatelessWidget {
 
                     const SizedBox(height: 16),
 
-                    // 📝 Title
+                    //  Title
                     FittedBox(
                       child: Text(
                         "Notes App",
@@ -60,7 +60,7 @@ class LoginScreen extends StatelessWidget {
 
                     const SizedBox(height: 6),
 
-                    // 📄 Subtitle
+                    // Subtitle
                     Text(
                       "Role based access for better control",
                       textAlign: TextAlign.center,
@@ -75,7 +75,7 @@ class LoginScreen extends StatelessWidget {
 
                     const SizedBox(height: 30),
 
-                    // ℹ️ Instruction
+                    // Instruction
                     Text(
                       "Please select how you want to continue",
                       textAlign: TextAlign.center,
@@ -89,15 +89,13 @@ class LoginScreen extends StatelessWidget {
 
                     const SizedBox(height: 20),
 
-                    // 👑 Admin Button
+                    //  Admin Button
                     _roleButton(
                       context,
                       title: "Login as Admin",
                       color: Colors.deepPurple,
                       onTap: () {
-                        context
-                            .read<AuthBloc>()
-                            .add(SelectRoleEvent(AppStrings.admin));
+                        context.read<AuthBloc>().add(SelectRoleEvent(AppStrings.admin));
                       },
                     ),
 
@@ -110,8 +108,7 @@ class LoginScreen extends StatelessWidget {
                       color: colorScheme.primary,
                       onTap: () {
                         context
-                            .read<AuthBloc>()
-                            .add(SelectRoleEvent(AppStrings.user));
+                            .read<AuthBloc>().add(SelectRoleEvent(AppStrings.user));
                       },
                     ),
                   ],

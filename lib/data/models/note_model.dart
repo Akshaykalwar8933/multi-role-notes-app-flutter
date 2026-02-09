@@ -32,6 +32,7 @@ class NoteModel extends HiveObject {
   @HiveField(8)
   String priority;
 
+
   NoteModel({
     required this.id,
     required this.title,

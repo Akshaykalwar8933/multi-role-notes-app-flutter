@@ -140,7 +140,6 @@ class NotesBloc extends Bloc<NotesEvent, NotesState> {
           n.description.toLowerCase().contains(q) ||
           n.priority.name.toLowerCase().contains(q);
     }).toList();
-
     emit(NotesLoaded(_sortLatestFirst(filtered)));
   }
 }

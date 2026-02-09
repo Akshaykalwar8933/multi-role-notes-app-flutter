@@ -13,6 +13,7 @@ import '../bloc/notes/notes_event.dart';
 import '../bloc/notes/notes_state.dart';
 import '../bloc/theme/theme_bloc.dart';
 import '../bloc/theme/theme_event.dart';
+import '../bloc/theme/theme_state.dart';
 
 class NotesScreen extends StatelessWidget {
   final bool isAdmin;
@@ -35,7 +36,6 @@ class NotesScreen extends StatelessWidget {
       },
       child: Scaffold(
         backgroundColor: theme.scaffoldBackgroundColor,
-
         appBar: AppBar(
           backgroundColor: theme.scaffoldBackgroundColor,
           elevation: 0,
@@ -45,37 +45,47 @@ class NotesScreen extends StatelessWidget {
           ),
           actions: [
 
+            // Sync (only for USER)
             if (!isAdmin)
               BlocBuilder<NotesBloc, NotesState>(
-              builder: (context, state) {
-                final syncing = state is NotesLoaded && state.isSyncing;
+                builder: (context, state) {
+                  final syncing =
+                      state is NotesLoaded && state.isSyncing;
+                  return IconButton(
+                    icon: const Icon(Icons.sync),
+                    onPressed: syncing
+                        ? null
+                        : () => context
+                        .read<NotesBloc>()
+                        .add(SyncNotesEvent()),
+                  );
+                },
+              ),
+
+            // Theme toggle (FIXED)
+            BlocBuilder<ThemeBloc, ThemeState>(
+              builder: (context, themeState) {
                 return IconButton(
-                  icon: const Icon(Icons.sync),
-                  onPressed: syncing
-                      ? null
-                      : () => context.read<NotesBloc>().add(SyncNotesEvent()),
+                  icon: Icon(
+                    themeState.isDark
+                        ? Icons.light_mode
+                        : Icons.dark_mode,
+                  ),
+                  onPressed: () =>
+                      context.read<ThemeBloc>().add(ToggleThemeEvent()),
                 );
               },
             ),
 
-            // 🌗 Theme toggle
-            IconButton(
-              icon: Icon(
-                context.watch<ThemeBloc>().state.isDark
-                    ? Icons.light_mode
-                    : Icons.dark_mode,
-              ),
-              onPressed: () =>
-                  context.read<ThemeBloc>().add(ToggleThemeEvent()),
-            ),
 
-            // 🚪 Logout
+            // Logout
             IconButton(
               icon: const Icon(Icons.logout),
               onPressed: () => _showLogoutBottomSheet(context),
             ),
           ],
         ),
+
 
         floatingActionButton:
         BlocBuilder<NotesBloc, NotesState>(

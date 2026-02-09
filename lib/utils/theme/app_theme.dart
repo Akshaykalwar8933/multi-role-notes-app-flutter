@@ -2,11 +2,10 @@ import 'package:flutter/material.dart';
 import '../constants/app_colors.dart';
 
 class AppTheme {
+
   static ThemeData lightTheme = ThemeData(
     brightness: Brightness.light,
-
     scaffoldBackgroundColor: AppColors.lightBackground,
-
     colorScheme: const ColorScheme.light(
       primary: AppColors.primary,
       error: AppColors.danger,
@@ -19,9 +18,7 @@ class AppTheme {
     ),
 
     cardColor: AppColors.lightCard,
-
     dividerColor: Colors.transparent,
-
     textTheme: const TextTheme(
       bodyLarge: TextStyle(
         color: AppColors.lightTextPrimary,
@@ -69,4 +66,5 @@ class AppTheme {
       ),
     ),
   );
+
 }

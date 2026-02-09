@@ -1,6 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive/hive.dart';
-
 import 'auth_event.dart';
 import 'auth_state.dart';
 
@@ -14,27 +13,21 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   }
 
   Future<void> _selectRole(
-      SelectRoleEvent event,
-      Emitter<AuthState> emit,
-      ) async {
+    SelectRoleEvent event,
+    Emitter<AuthState> emit,
+  ) async {
     await box.put("role", event.role);
     emit(Authenticated(event.role));
   }
 
-  void _loadRole(
-      LoadSavedRoleEvent event,
-      Emitter<AuthState> emit,
-      ) {
+  void _loadRole(LoadSavedRoleEvent event, Emitter<AuthState> emit) {
     final role = box.get("role");
     if (role != null) {
       emit(Authenticated(role));
     }
   }
 
-  Future<void> _logout(
-      LogoutEvent event,
-      Emitter<AuthState> emit,
-      ) async {
+  Future<void> _logout(LogoutEvent event, Emitter<AuthState> emit) async {
     await box.clear();
     emit(AuthInitial());
   }
